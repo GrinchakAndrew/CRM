@@ -1,0 +1,199 @@
+<div class="slide-wrapper" index="1">
+					<div class="hr-not-red"></div>
+					<h3>Sales Mgmr Dashboard</h3>
+					<ul class="ul">
+						<li style="list-style-type: none;">
+							<table class="slide" style="width: 100%;">
+								<tbody>
+										<tr>
+											<td class="c52 c31" colspan="6" rowspan="1">
+												<h1><span class="c68">Sales_Manager Dashboard Page:</span></h1>
+											</td>
+										</tr>
+										<tr>
+											<td class="c52" colspan="6" rowspan="1">
+											<div style="text-align: center;" id="crm-dashboard"></div>
+												<ul class="ul-slide">
+													<br/>
+												<li>	
+													<b>User-story</b>: Sales Manager Dashboard View: <br/>
+													<b>When</b>: When : Sales_manager logs in <br/>
+													<b>Then</b>: Can defaults to “Dashboard” location view -> <br/>
+													<b>And </b> : All the Leads that are accessible to Sales Manager (Dashboard for Sales Manager)<br/>
+													
+												</li>
+												<br/>
+												<li>
+													<b>User-story</b>: A Lead has been sold successfully:<br/>
+													<b>When</b>: a lead has been sold successfully<br/>
+													<b>Then</b>:  the lead is seen under the corresponding status: 'Processed by the Field Agent'<br/>
+													
+													<span>Processed by Field Agent: Hebrew Translation -> </span></span><br/>
+													<span>בטיפול סוכן שטח</span><br/>
+
+												</li>
+												<br/>
+												<li>
+													<span style="color: red;">NB! Refuses = Lost status of the Lead. </span>
+												</li>
+												<br/>
+												<li>
+														<b>When</b> : Sales Manager tabs through the following right tabs:<br/>
+															- Dashboard<br/>
+															- Sale<br/>
+															- Calendar<br/> 
+															- Report<br/>
+															- Settings<br/>
+														<b>Then</b> : He\she can view the following pages: <br/>
+															- Dashboard Page<br/>
+															- Sales Page<br/> 
+															- Calendar Page<br/>
+															- Report Page<br/> 
+															- Setting Page
+												</li>
+												<br/>
+												<li> 
+												
+												<b>Scenario</b>: Statuses drop-down under calendar:  <br/>
+												<b>General description</b>: the calendar is basically the filter of the statuses table
+												So that you can filter by date+rep name+ leads status<br/>
+												<b>When</b> : Sales manager selects ‘-Andrew’ <br/>
+												<b>And</b> : Sales Manager selects status of a lead ‘- no answer’<br/>
+												<b>Then</b>: I should be able to see only the leads with the corresponding status for Andrew (Andrew is a Sales Representative). <br/>
+												</li>
+												<br/>
+												<li> 
+													<b>Scenario</b>: Search by Representative and Status by Sales Manager from the Dashboard tab:   <br/>
+													<b>When</b> : Sales Manager is on the Dashboard <br/>
+													<b>And</b> : he selects the dropdown filter option 'Representative' by name <br/>
+													<b>And</b> : he selects status of the Lead <br/>
+													<b>Then</b> : Sales Manager will see the search results in the table?  <br/>
+													<b>And</b> : the table view is reformatted to display only the results by the given Sales Representative and the selected status. Others are hidden out of sight.  <br/>
+
+												</li>
+												 <br/>
+												<li> 
+												<b>Question</b>: Can Sales manager add \ view tasks for Sales Representative ? <br/>
+												<b>Answer</b>: no, cannot. <br/>
+												</li>
+												<br/>
+												<li>
+												<b>Scenario</b>: Dashboard main table view headers, defaulting to current date view: <br/>
+												<b>When</b> : Columnized number of leads by status show under each headlined Sales Representative by name <br/>
+												<b>Then</b> : The leads view by numbers should be shown against selected calendar day, defaulting to the current date. <br/>
+												</li>
+												<br/>
+												<li> 
+													<b>Scenario</b>: 'Last Updates' table: showing the most recently changed leads by name of a Sales Representative.<br/>
+													
+													<b>When</b> : Some changes are made in any of the leads<br/>
+													<b>Then</b> : Last updated table will be refreshed to display them in lazy load mode, handled by onScroll event. <br/>
+												</li>
+												<br/>
+												<li> 
+													<b> Scenario </b> : Adding new tasks: <br/>
+													<b>When</b> : User click on + in the task <br/>
+													<b>Then</b> :  Pop-up window appears with Header, date-time, textarea  and button ‘Cancel’ and ‘Save’.<br/>
+													 
+													<b> Scenario </b> : Saving a new tasks:<br/>
+													
+													<b>When</b> : User saves the task <br/>
+													<b>Then</b> :  Task appears in the sortable task list <br/>
+													<b>And</b> : the task appears in the calendar.<br/>
+													<b>And</b> : the currently selected sorting is applied to the list<br/>
+													
+												</li>
+												<br/>
+												<li>
+													<b>General Notes</b>: <br/>
+													The headers of the columns contain the names of the Sales Representatives<br/>
+													The table displays all the Leads by Status: <br/>
+													
+													בוטל עקב אי שליחה - <br/>
+													Canceled due to non-sending<br/>
+													 
+													מסורב - <br/>
+													Refused<br/>
+													 
+													בוטל ע״י בעל האירוע - <br/>
+													Canceled by the event owner<br/>
+													 
+													נסגר שירותים ללא איזי - <br/>
+													Services closed without Easy2Give<br/>
+													 
+													פגישה התקיימה ונחתמה - <br/>
+													A meeting was held and signed<br/>
+													 
+													ללא מענה - <br/>
+													Unanswered<br/>
+													 
+													בתהליך - <br/>
+													in process<br/>
+													 
+													נוצר קשר ראשוני - <br/>
+													Initial contact was made<br/>
+													 
+													טרם טופל - <br/>
+													Not yet taken care of<br/>
+													
+												</li>
+												<br/> 
+												<li> 
+												 	<b> Scenario </b> : Re-assigning a lead to a different Sales Representative: <br/>
+													<b>When</b> : Sales Manager clicks on 'More Actions' button<br/>
+													<b>Then</b> :  Drop-down listing of Sales Representatives by Name unfolds by their names listed under Move To option<br/>
+													<b>And</b> :  Sales Manager can assign \ re-assign any single lead or a batch-lead collection to an opted Sales Representative<br/>
+													<b>And</b> :  Sales Manager can delete or change Lead's status with the corresponding drop-down options: 
+													<br/>
+													- 	Status Change<br/>
+													- Delete<br/>
+													<b>And</b> Once tasks were re-assigned to a sales_representative -> Sales_representative can view leads as tasks on his dashboard:  
+													<br/>
+												</li>
+												<br/> 
+												<li> 
+												 	<b> Scenario </b> : Sort-ordering table views by clicking: <br/>
+													<b>When</b> : User clicks on any header of a table<br/>
+													<b>Then</b> : Sort-ordering occurs in alphabetic order, ascending or descending<br/>
+												</li> 
+												 <br/> 
+												 <li> 
+												 	<b> Scenario </b> : Sort-filtering tables by the following categorized : <br/>
+														Sale_representative Name<br/>
+														Field agent<br/>
+														Lead status<br/>
+														Last update of lead<br/>
+														Date of lead creation<br/>
+														Link to the lead details page<br/><br/>
+														 
+														Left side locates the filters:<br/>
+														 
+														Search by every field  <br/>
+														It is possible to set filter by next columns:<br/>
+														Event date<br/>
+														Client’s status (new client or returned)<br/>
+														Client’s type<br/>
+														Client’s phone<br/>
+														Event type<br/>
+														Event Location <br/>
+														Lead status<br/>
+														Sale_representative Name<br/>
+														Field agent<br/>
+														Date lead creation <br/><br/>
+												</li> 
+												<br/>
+												<li>
+												<b>	Scenario</b>: three buttons in the left top corner of the Sales tab table view: <br/>
+												<b>General Description</b> : Under the main table and filters in the left top corner located three buttons:<br/>
+													1.To create the lead manually <br/>
+													2.To import leads from excel file:Import have template with cells which uses to create lead<br/>
+													3.To export : export filtered view table to the excel file with lead information from displayed table.<br/>
+												 </li> 
+												</ul>
+											</td>
+										</tr>
+								</tbody>
+							</table>
+						</li>
+					</ul>
+</div>

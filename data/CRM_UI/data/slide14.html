@@ -1,0 +1,70 @@
+<div class="slide-wrapper" index="14">
+					<div class="hr"></div>
+					<h3>Screen 15:</h3>
+					<ul class="ul">
+						<li style="list-style-type: none;">
+							<table class="slide" style="width: 100%;">
+								<tbody>
+										<tr>
+											<td class="c52" colspan="6" rowspan="1">
+												<p class="c6 c49"><span class="c24 c48"></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td class="c52 c31" colspan="6" rowspan="1">
+												<h1><span class="c68">Personal Data Changes:</span></h1>
+												<div></div>
+											</td>
+										</tr>
+										<tr>
+											<td class="c52" colspan="6" rowspan="1">
+											<div id="personal_data_0" style="text-align : center;"></div>
+											<div id="personal_data_1" style="text-align : center;"></div>
+											<div id="personal_data_2" style="text-align : center;"></div>
+											<div id="personal_data_3" style="text-align : center;"></div>
+											<div id="personal_data_4" style="text-align : center;"></div>
+												<ul class="ul-slide">
+													<li>
+														<b>User-story</b>: Personal Data Changes<br/>
+														<b>Description</b> : User can have multiple phone numbers linked to his account, and therefore can change his phone number at any time<br/>
+														<b>When</b> : User changes his Photo
+														<b>Then </b> : User should be able to take a photo <br/>
+														<b>And</b> : User should be able to select any existing photo from his Gallery<br/>
+														<b>And</b> : User should be able to crop and resize his image<br/>
+													</li>
+													<br/>
+													<li>
+														<b>User-story</b>: Changed Phone Update SMS-Verification-1 <br/>
+														<b>Description</b> : User inputted his new phone number into the <b> Phone Number </b> input field:<br/>
+														<b>When</b> : User is done with input of the phone number, and presses the DONE button on the keyboard<br/>
+														<b>And</b>	: server-side receives API request for verification, <br/>
+														<b>While</b> : the server is in process of the response, the number is blocked and cannot be changed<br/>
+														<b>And</b>	: user is shown a popup -> "your verification code will be sent shortly, pls., check it"<br/>
+													</li>
+													<br/>
+													<li>
+														<b>User-story</b>: Changed Phone Update SMS-Verification-2 <br/>
+														<b>When</b> : user receives the SMS-code<br/>
+														<b>Then </b> : user inputs the SMS-code<br/>
+														<b>And</b> : user presses the button 'Save'<br/>
+														<b>And</b> : App dispatches the information to the server <br/>
+														<b>And</b> : spinner is shown to the user while the server verifies the SMS code with the inputted 
+																	 sms -code and updates the data<br/>
+														
+													</li>
+													<br/>
+													<li>			 
+														<b>User-story</b>: Changed Phone Update SMS-Verification-3 <br/>			
+														<b>When</b> : server responds with 'SUCCESS' status of the request<br/>
+														<b>Then</b> : the number of the telephone which is updated is marked with the V-shaped Tick <br/>
+																	  in the upper right corner above the telephone number input<br/>
+													</li>
+													<br/>
+												</ul>
+											</td>
+										</tr>
+								</tbody>
+							</table>
+						</li>
+					</ul>
+				</div>
