@@ -28,7 +28,7 @@
 														<b>Then</b> : PopUp opens with data to fill in per lead, where: </br>
 														
 														- additional email can be added \ edited </br>
-														- Sale_representative or sale_manager can assign agent using dropdown and select the date and time of  meeting </br>
+														- Sale_representative or sale_manager can assign agent via dropdown and select the date and time of the meeting </br>
 														- it is possible to leave a comment for user agent</br>
 														- Pay options can be selected: </br></br>
 															- Credit card,</br>
@@ -50,8 +50,22 @@
 														then the checkbox is to be selected for payment in parts, </br>
 														and from the drop-down menu client can select the partial breakdown of the payment ( from 1 - to 12).</br>
 													</li>
+													</br>
 													<li>
-														
+														</br>
+														<a href="019 SMS API 1.5.6.pdf">Click to see the 'SMS API' to use for SMS dispatch</a>
+													</li>
+													<br/>
+													<li>
+													<b>Scenario</b> SMS notification successfully dispatched : </br>
+														<b>When</b> SMS notification has been successfully dispatched</br>
+														<b>Then</b> A comment should be added to the comment 'message' (blue field on the  Lead) automatically that "SMS with banking pre-requisites was sent"</br>
+													</li>
+													<br/>
+													<li>
+													<b>Scenario</b> Lead paid thru bank transfer: </br>
+														<b>When</b> Lead has been paid through the bank transfer, i.e., manually</br>
+														<b>Then</b> A comment should be added to the comment 'message' (blue field on the  Lead) by hand, and not automatically</br>
 													</li>
 													<br/>
 												</ul>	
