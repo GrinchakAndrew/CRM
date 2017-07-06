@@ -20,12 +20,12 @@
 		}
 	</style>
 	<script type="text/javascript" >
-			var spreadsheet = "https://docs.google.com/spreadsheets/d/1sSlREMwPvk9t62FpPLb5V6AoENJE69-CEgnVGNWttpQ/edit#gid=0";
+			var spreadsheet = "https://docs.google.com/spreadsheets/d/1zBZN4DCd8TKs6JqhLp73UNGajWRwy0QNzCUtaKnLkZ4/edit#gid=0";
 			
 			$(document).ready(function(){
 			$('#classes').sheetrock({
 					url : spreadsheet, 
-					query: "select A, B, C where C is not null",
+					query: "select A, B, C, E where C is not null",
 					labels : ['Tasks', 'Description', 'PHP'],
 					callback : function(a, b, c){
 						console.log(a, b, c);
