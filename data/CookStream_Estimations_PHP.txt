@@ -1,4 +1,4 @@
-<!doctype html>
+<!Doctype html>
 <html lang="en">	
 <head>
     <meta charset="UTF-8">
@@ -30,9 +30,13 @@
                 labels: ['Tasks', 'Description', 'PHP'],
                 callback: function(a, b, c) {
                     console.log(a, b, c);
-                    var ctx = document.getElementById("myChart").getContext('2d');
+				var ctx = document.getElementById("myChart").getContext('2d');
+					
+					var timeout = setTimeout(function(){
+											console.log(ctx, 'ctx');
+					
                     var myChart = new Chart(ctx, {
-                        type: 'pie',
+                        type: 'bar',
                         data: {
                             labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
                             datasets: [{
@@ -67,16 +71,14 @@
                             }
                         }
                     });
-                }
+                		
+					}, 3000)
+					
+
+				
+				
+				}
             });
-
-            /* $('#classes').sheetrock({
-            		url : spreadsheet, 
-            		query: "select A, C where A contains 'Total hrs'",
-            		labels : ['Estimation', 'PHP'],
-            		headersOff : true
-            }); */
-
         });
     </script>
 </head>
