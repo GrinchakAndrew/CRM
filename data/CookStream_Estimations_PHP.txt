@@ -1,4 +1,4 @@
-<!Doctype html>
+<!doctype html>
 <html lang="en">	
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,7 @@
     <script type="text/javascript" src="js/sheetrock.min.js"></script>
     <link rel="stylesheet" href="js/bootstrap.min.css">
 	<script type="text/javascript" src="js/Chart.js"></script>
+	 <script type="text/javascript" src="js/Chart.PieceLabel.min.js"></script>
     <style>
         table td:not(:first-child) {
             text-align: center;
@@ -20,6 +21,16 @@
         table {
             margin-top: 25px;
         }
+		.canvas_wrapper {
+			width : 300px;
+			height : 300px;
+			display: inline-block;
+		}
+		.canvas_wrapper_container{
+			width: 50%;
+			margin: 0 auto;
+		}
+		
     </style>
     <script type="text/javascript">
         var spreadsheet = "https://docs.google.com/spreadsheets/d/1zBZN4DCd8TKs6JqhLp73UNGajWRwy0QNzCUtaKnLkZ4/edit#gid=0";
@@ -29,63 +40,125 @@
                 query: "select A, B, C, E where C is not null",
                 labels: ['Tasks', 'Description', 'PHP'],
                 callback: function(a, b, c) {
-                    console.log(a, b, c);
 				var ctx = document.getElementById("myChart").getContext('2d');
+				var ctx2 = document.getElementById("myChart2").getContext('2d');
+				ctx.canvas.width = 300;
+				ctx.canvas.height = 300;
+				ctx2.canvas.width = 300;
+				ctx2.canvas.height = 300;
 					
 					var timeout = setTimeout(function(){
-											console.log(ctx, 'ctx');
+					var data = {
+						status_index : c.rows[0]['labels'].indexOf('status'),
+						done : '',
+						in_process : ''
+					};
+					data.done = c.rows.filter(function(i, j) {
+						if(~i['cellsArray'][data.status_index].indexOf('done') || ~i['cellsArray'][data.status_index].indexOf('Done')) {
+							return i['cellsArray'][data.status_index];
+						 }
+					});
+					
+					data.in_process = c.rows.filter(function(i, j) {
+							if(~i['cellsArray'][data.status_index].indexOf('process')) {
+								return i['cellsArray'][data.status_index];
+							}
+						});
+					
+					var tasksDone = data.done.length; 
+					var tasksInProcess = data.in_process.length;
+					var tasksIncomplete = c.rows.length - (tasksDone + tasksInProcess);
 					
                     var myChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                            labels: ["Done", "In Process", "Incomplete"],
                             datasets: [{
-                                label: '# of Votes',
-                                data: [12, 19, 3, 5, 2, 3],
+                                label: ['# of Tasks'],
+                                data: [tasksDone, tasksInProcess, tasksIncomplete],
                                 backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                    'rgba(255, 206, 86, 0.2)',
                                     'rgba(75, 192, 192, 0.2)',
-                                    'rgba(153, 102, 255, 0.2)',
-                                    'rgba(255, 159, 64, 0.2)'
+									 'rgba(54, 162, 235, 0.2)',
+									  'rgba(255, 206, 86, 0.2)'
                                 ],
                                 borderColor: [
-                                    'rgba(255,99,132,1)',
-                                    'rgba(54, 162, 235, 1)',
-                                    'rgba(255, 206, 86, 1)',
                                     'rgba(75, 192, 192, 1)',
-                                    'rgba(153, 102, 255, 1)',
-                                    'rgba(255, 159, 64, 1)'
+									 'rgba(54, 162, 235, 1)',
+									 'rgba(255, 206, 86, 1)'
                                 ],
                                 borderWidth: 1
                             }]
                         },
                         options: {
+							responsive: true,
+							maintainAspectRatio: true,
                             scales: {
                                 yAxes: [{
                                     ticks: {
                                         beginAtZero: true
                                     }
                                 }]
-                            }
+                            }, 
+							animation: {
+								animateScale: true,
+								animateRotate: true
+							}
                         }
                     });
-                		
-					}, 3000)
 					
-
-				
-				
+					var myChart2 = new Chart(ctx2, {
+                        type: 'pie',
+                        data: {
+                            labels: ["Done", "In Process", "Incomplete"],
+                            datasets: [{
+                                label: '# of Tasks',
+                                data: [tasksDone, tasksInProcess, tasksIncomplete],
+                                backgroundColor: [
+                                    'rgba(75, 192, 192, 0.2)',
+									 'rgba(54, 162, 235, 0.2)',
+									  'rgba(255, 206, 86, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(75, 192, 192, 1)',
+									 'rgba(54, 162, 235, 1)',
+									 'rgba(255, 206, 86, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+							responsive: true,
+							maintainAspectRatio: true,
+							animation: {
+								animateScale: true,
+								animateRotate: true
+							}, 
+							pieceLabel: {
+							mode: 'percentage',
+							precision: 1,
+							fontColor: '#000000', 
+							arc: false
+						  }
+                        }
+                    });
+					
+					}, 1000);
 				}
             });
         });
     </script>
 </head>
-
 <body>
+	<div class="canvas_wrapper_container">
+	<div class="canvas_wrapper">
+		<canvas id="myChart"></canvas>
+	</div>
+	<div class="canvas_wrapper">
+		<canvas id="myChart2"></canvas>
+	</div>
+	</div>
+	
     <table id="classes" class="table-responsive table-bordered table-striped"></table>
-    <canvas id="myChart" width="400" height="400"></canvas>
 </body>
 
 </html>
