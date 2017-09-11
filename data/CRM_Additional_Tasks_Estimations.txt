@@ -55,36 +55,36 @@
 						be : c.rows[0]['labels'].indexOf('Back-end')
 					};
 					
-					var fe = c.rows.map(function(i, j) {
-						if(j !== 0 && i['cellsArray'][data.fe]) {
+					var fe = c.rows.map(function(i, j, arr) {
+						if(j !== 0 && j < arr.length -2 && i['cellsArray'][data.fe]) {
 							return i['cellsArray'][data.fe];
 						 }else {
 						   return 0;
 						 }
 					});
-					var fe_num_of_tasks = fe.filter(function(val){return val > 0;}).length;
+					var fe_num_of_tasks = fe.filter(function(val, index, arr){
+							return val > 0 && index < arr.length-2;
+						}).length;
 					
-					console.log(fe_num_of_tasks , 'fe_num_of_tasks ');
-					
-					fe = fe.reduce(function(sum, val){
-						return parseFloat(sum) + parseFloat(val);
+					fe = fe.reduce(function(sum, val, index, arr){
+							return sum + parseFloat(val);
 					}, 0);
 					
-					var be = c.rows.map(function(i, j) {
-						if(j !== 0 && i['cellsArray'][data.be]) {
+					var be = c.rows.map(function(i, j, arr) {
+						if(j !== 0 && j < arr.length -2 && i['cellsArray'][data.be]) {
 							return i['cellsArray'][data.be];
 						 }else {
 						   return 0;
 						 }
 					});
 					
-					var be_num_of_tasks = be.filter(function(val){return val > 0;}).length;
+					var be_num_of_tasks = be.filter(function(val, index, arr){
+							return val > 0 && index < arr.length-2;
+						}).length;
 					
-					console.log(be_num_of_tasks , 'be_num_of_tasks ');
-					be = be.reduce(function(sum, val){
-						return parseFloat(sum) + parseFloat(val);
+					be = be.reduce(function(sum, val) {
+						return sum + parseFloat(val);
 					}, 0)
-					
 					
                     var myChart = new Chart(ctx, {
                         type: 'bar',
