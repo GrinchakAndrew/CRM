@@ -39,8 +39,8 @@
 		$(document).ready(function() {
             $('#classes').sheetrock({
                 url: spreadsheet,
-                query: "select A, C, D where A is not null",
-                labels: ['Additional Tasks', 'Front-end', 'Back-end'],
+                query: "select A, B, C, D where A is not null",
+                labels: ['Additional Tasks', 'Comments', 'Front-end', 'Back-end'],
                 callback: function(a, b, c) {
 				var ctx = document.getElementById("myChart").getContext('2d');
 				var ctx2 = document.getElementById("myChart2").getContext('2d');
